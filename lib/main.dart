@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:udemy1/src/app/consts.dart';
-import 'package:udemy1/src/ui/views/log_in/log_in_view.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:stacked_services/stacked_services.dart';
+import 'package:udemy1/src/app/locator/locator.dart';
+import 'package:udemy1/src/app/router/router.gr.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 
@@ -11,10 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: pink,
-      ),
-      home: LogInView(),
+      initialRoute: Routes.logInView,
+      onGenerateRoute: Router(),
+      navigatorKey: locator<NavigationService>().navigatorKey,
     );
   }
 }

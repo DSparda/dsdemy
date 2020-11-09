@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy1/src/app/consts.dart';
+import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const _width = 170.0;
@@ -30,7 +30,7 @@ class RoundedButton extends StatelessWidget {
         borderRadius: _borderRadius,
         boxShadow: [
           BoxShadow(
-            color: pink.withOpacity(0.54),
+            color: Constants.pink54,
             blurRadius: 4,
             offset: Offset(0, 4),
           )
@@ -39,14 +39,14 @@ class RoundedButton extends StatelessWidget {
       child: ClipRRect(
         borderRadius: _borderRadius,
         child: FlatButton(
-          color: pink,
+          color: Constants.pink,
           onPressed: press,
           child: Text(
             text,
             style: GoogleFonts.openSans(
               fontSize: _fontSize,
               fontWeight: _fontWeight,
-              color: white,
+              color: Constants.white,
             ),
           ),
         ),

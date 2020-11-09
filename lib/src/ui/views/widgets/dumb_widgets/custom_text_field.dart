@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy1/src/app/consts.dart';
+import 'package:udemy1/src/app/utils/constants.dart';
 
 const _height = 50.0;
 const _widthPadding = 80.0;
@@ -11,7 +11,11 @@ class CustomTextField extends StatelessWidget {
   final bool obsecure;
 
   const CustomTextField({
-    Key key, this.margin = 12, this.icon, this.hint, this.obsecure = false,
+    Key key,
+    this.margin = 12,
+    this.icon,
+    this.hint,
+    this.obsecure = false,
   }) : super(key: key);
 
   @override
@@ -23,10 +27,10 @@ class CustomTextField extends StatelessWidget {
       margin: EdgeInsets.only(bottom: margin),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       decoration: BoxDecoration(
-        color: pink18,
+        color: Constants.pink18,
         borderRadius: BorderRadius.circular(40.0),
         border: Border.all(
-          color: black54,
+          color: Constants.black54,
           width: 1.0,
         ),
       ),
@@ -36,7 +40,7 @@ class CustomTextField extends StatelessWidget {
             hintText: hint,
             icon: Icon(
               icon,
-              color: black72,
+              color: Constants.black72,
             ),
             border: InputBorder.none),
       ),

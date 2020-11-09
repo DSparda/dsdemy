@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:udemy1/src/app/locator/locator.dart';
+import 'package:udemy1/src/app/router/router.gr.dart';
 
 class LogInViewModel extends BaseViewModel {
+  final NavigationService _navigationService = locator<NavigationService>();
+
   String _title1 = 'SIGN';
   get title1 => _title1;
 
@@ -34,4 +39,9 @@ class LogInViewModel extends BaseViewModel {
 
   String _signUp2 = ' Sign Up';
   get signUp2 => _signUp2;
+
+  Future navToLogOut() async {
+    print('tapped');
+    await _navigationService.navigateTo(Routes.logOutView);
+  }
 }

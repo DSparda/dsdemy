@@ -27,9 +27,19 @@ dependencies:
   # Stacked architecture
   stacked: ^1.7.6
 
+  # third-party services
+  stacked_services: ^0.5.4+3
+
   flutter_svg: ^0.19.1
 
   google_fonts:
+
+  # navigation
+  auto_route: ^0.6.7
+  
+  # inversion of control
+  get_it: ^4.0.4
+  injectable: ^1.0.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -38,6 +48,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # Generators
+  build_runner: ^1.10.1
+  auto_route_generator: ^0.6.8
+  injectable_generator: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:udemy1/src/app/consts.dart';
+import 'package:udemy1/src/app/utils/constants.dart';
 
-const _t1Color = pink;
-const _t2Color = black72;
+const _t1Color = Constants.pink;
+const _t2Color = Constants.black72;
 
 class TitleText extends StatelessWidget {
   final String t1;

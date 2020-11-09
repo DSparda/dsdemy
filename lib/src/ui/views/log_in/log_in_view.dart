@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -18,6 +19,8 @@ class LogInView extends StatelessWidget {
         Widget child,
       ) {
         var size = MediaQuery.of(context).size;
+        final recognizer = TapGestureRecognizer()
+          ..onTap = () => model..navToLogOut();
         return Scaffold(
           body: Container(
             height: size.height,
@@ -62,13 +65,14 @@ class LogInView extends StatelessWidget {
                     ),
                     RoundedButton(
                       text: model.buttonText,
-                      press: () {},
+                      press: model.navToLogOut,
                       margin: 24.0,
                     ),
                     TapableText(
                       t1: model.signUp1,
                       t2: model.signUp2,
                       fontSize: 15,
+                      recognizer: recognizer,
                     )
                   ],
                 ),
