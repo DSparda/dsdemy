@@ -2,10 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-import 'package:udemy1/src/ui/views/widgets/dumb_widgets/custom_text_field.dart';
-import 'package:udemy1/src/ui/views/widgets/dumb_widgets/rounded_button.dart';
-import 'package:udemy1/src/ui/views/widgets/dumb_widgets/tapable_text.dart';
-import 'package:udemy1/src/ui/views/widgets/dumb_widgets/title_text.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_text_field.dart';
+import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
+import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
+import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
 import './log_in_view_model.dart';
 
 class LogInView extends StatelessWidget {
@@ -20,7 +20,7 @@ class LogInView extends StatelessWidget {
       ) {
         var size = MediaQuery.of(context).size;
         final recognizer = TapGestureRecognizer()
-          ..onTap = () => model..navToLogOut();
+          ..onTap = () => model..navToRegister();
         return Scaffold(
           body: Container(
             height: size.height,
@@ -65,7 +65,7 @@ class LogInView extends StatelessWidget {
                     ),
                     RoundedButton(
                       text: model.buttonText,
-                      press: model.navToLogOut,
+                      press: model.navToRegister,
                       margin: 24.0,
                     ),
                     TapableText(

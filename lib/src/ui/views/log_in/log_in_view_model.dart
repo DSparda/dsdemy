@@ -22,14 +22,14 @@ class LogInViewModel extends BaseViewModel {
   String _password = 'Password';
   get password => _password;
 
+  IconData _passwordIcon = Icons.lock_outline;
+  get passwordIcon => _passwordIcon;
+
   String _forget1 = 'Forget password? Click';
   get forget1 => _forget1;
 
   String _forget2 = ' here';
   get forget2 => _forget2;
-
-  IconData _passwordIcon = Icons.lock_outline;
-  get passwordIcon => _passwordIcon;
 
   String _buttonText = 'Sign in';
   get buttonText => _buttonText;
@@ -40,8 +40,7 @@ class LogInViewModel extends BaseViewModel {
   String _signUp2 = ' Sign Up';
   get signUp2 => _signUp2;
 
-  Future navToLogOut() async {
-    print('tapped');
-    await _navigationService.navigateTo(Routes.logOutView);
+  Future navToRegister() async {
+    await _navigationService.navigateTo(Routes.registerView);
   }
 }

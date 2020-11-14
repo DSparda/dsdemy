@@ -12,4 +12,5 @@ class Constants {
   static const black = Colors.black;
   static const black72 = Color(0xB8000000);
   static const black54 = Colors.black54;
+  static const black45 = Colors.black45;
 }

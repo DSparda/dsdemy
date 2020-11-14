@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
 
 const _height = 50.0;
@@ -38,6 +39,9 @@ class CustomTextField extends StatelessWidget {
         obscureText: obsecure,
         decoration: InputDecoration(
             hintText: hint,
+            hintStyle: GoogleFonts.roboto(
+              color: Constants.black45,
+            ),
             icon: Icon(
               icon,
               color: Constants.black72,
