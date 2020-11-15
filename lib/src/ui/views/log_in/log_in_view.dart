@@ -53,7 +53,7 @@ class LogInView extends StatelessWidget {
                       margin: 6,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 40.0),
+                      padding: const EdgeInsets.only(right: 44.0),
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: TapableText(
@@ -71,7 +71,7 @@ class LogInView extends StatelessWidget {
                     TapableText(
                       t1: model.signUp1,
                       t2: model.signUp2,
-                      fontSize: 15,
+                      fontSize: 14,
                       recognizer: recognizer,
                     )
                   ],

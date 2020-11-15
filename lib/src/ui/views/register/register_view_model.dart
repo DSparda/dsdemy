@@ -24,6 +24,17 @@ class RegisterViewModel extends BaseViewModel {
   IconData _genderIcon = Icons.people_alt_outlined;
   get genderIcon => _genderIcon;
 
+  List<String> _genders = <String>['Male', 'Female'];
+  get genders => _genders;
+
+  String _selectedGender;
+  get selectedGender => _selectedGender;
+
+  void onGenderSelected(dynamic value) {
+    _selectedGender = value;
+    notifyListeners();
+  }
+
   String _phone = 'Phone number';
   get phone => _phone;
 

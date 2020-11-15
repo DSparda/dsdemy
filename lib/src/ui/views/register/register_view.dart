@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_dropdown.dart';
 import 'package:udemy1/src/ui/widgets/dumb/custom_text_field.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
@@ -11,7 +12,7 @@ import 'register_view_model.dart';
 class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<RegisterViewModel>.nonReactive(
+    return ViewModelBuilder<RegisterViewModel>.reactive(
       viewModelBuilder: () => RegisterViewModel(),
       builder: (
         BuildContext context,
@@ -33,11 +34,18 @@ class RegisterView extends StatelessWidget {
                       TitleText(
                         t1: model.title1,
                         t2: model.title2,
-                        margin: 72,
+                        margin: 36,
                       ),
                       CustomTextField(
                         hint: model.username,
                         icon: model.userIcon,
+                      ),
+                      CustomDropdown(
+                        hint: model.gender,
+                        icon: model.genderIcon,
+                        list: model.genders,
+                        selected: model.selectedGender,
+                        onSelected: model.onGenderSelected,
                       ),
                       CustomTextField(
                         hint: model.phone,
@@ -60,7 +68,7 @@ class RegisterView extends StatelessWidget {
                       TapableText(
                         t1: model.signIn1,
                         t2: model.signIn2,
-                        fontSize: 15,
+                        fontSize: 14,
                         recognizer: recognizer,
                       ),
                     ],

@@ -4,6 +4,7 @@ import 'package:udemy1/src/app/utils/constants.dart';
 
 const _height = 50.0;
 const _widthPadding = 80.0;
+final _borderRadius = BorderRadius.circular(40.0);
 
 class CustomTextField extends StatelessWidget {
   final double margin;
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Container(
       width: size.width - _widthPadding,
       height: _height,
@@ -29,7 +31,7 @@ class CustomTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       decoration: BoxDecoration(
         color: Constants.pink18,
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: _borderRadius,
         border: Border.all(
           color: Constants.black54,
           width: 1.0,
@@ -44,7 +46,7 @@ class CustomTextField extends StatelessWidget {
             ),
             icon: Icon(
               icon,
-              color: Constants.black72,
+              color: Constants.black54,
             ),
             border: InputBorder.none),
       ),
