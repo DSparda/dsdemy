@@ -32,7 +32,7 @@ class RoundedButton extends StatelessWidget {
           BoxShadow(
             color: Constants.pink54,
             blurRadius: 4,
-            offset: Offset(0, 4),
+            offset: Offset(2, 4),
           )
         ],
       ),

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
-
-const _height = 50.0;
-const _widthPadding = 80.0;
-final _borderRadius = BorderRadius.circular(40.0);
+import 'package:udemy1/src/ui/widgets/dumb/custom_container.dart';
 
 class CustomDropdown extends StatelessWidget {
   final double margin;
@@ -26,19 +23,8 @@ class CustomDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width - _widthPadding,
-      height: _height,
-      margin: EdgeInsets.only(bottom: margin),
-      decoration: BoxDecoration(
-        color: Constants.pink18,
-        borderRadius: _borderRadius,
-        border: Border.all(
-          color: Constants.black54,
-          width: 1.0,
-        ),
-      ),
+    return CustomContainer(
+      margin: margin,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -51,6 +37,7 @@ class CustomDropdown extends StatelessWidget {
           ),
           DropdownButtonHideUnderline(
             child: DropdownButton(
+                iconEnabledColor: Constants.black54,
                 value: selected,
                 hint: Text(hint,
                     style: GoogleFonts.roboto(

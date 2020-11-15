@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:udemy1/src/ui/widgets/dumb/custom_dropdown.dart';
-import 'package:udemy1/src/ui/widgets/dumb/custom_text_field.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
+import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
 
@@ -36,7 +36,7 @@ class RegisterView extends StatelessWidget {
                         t2: model.title2,
                         margin: 36,
                       ),
-                      CustomTextField(
+                      TextFieldWithIcon(
                         hint: model.username,
                         icon: model.userIcon,
                       ),
@@ -47,15 +47,15 @@ class RegisterView extends StatelessWidget {
                         selected: model.selectedGender,
                         onSelected: model.onGenderSelected,
                       ),
-                      CustomTextField(
+                      TextFieldWithIcon(
                         hint: model.phone,
                         icon: model.phoneIcon,
                       ),
-                      CustomTextField(
+                      TextFieldWithIcon(
                         hint: model.email,
                         icon: model.emailIcon,
                       ),
-                      CustomTextField(
+                      TextFieldWithIcon(
                         hint: model.password,
                         icon: model.passwordIcon,
                         margin: 36.0,

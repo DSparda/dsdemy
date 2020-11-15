@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-import 'package:udemy1/src/ui/widgets/dumb/custom_text_field.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
+import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
 import './log_in_view_model.dart';
 
@@ -42,11 +42,11 @@ class LogInView extends StatelessWidget {
                       t2: model.title2,
                       margin: 24.0,
                     ),
-                    CustomTextField(
+                    TextFieldWithIcon(
                       hint: model.email,
                       icon: model.emailIcon,
                     ),
-                    CustomTextField(
+                    TextFieldWithIcon(
                       hint: model.password,
                       icon: model.passwordIcon,
                       obsecure: true,
@@ -65,7 +65,7 @@ class LogInView extends StatelessWidget {
                     ),
                     RoundedButton(
                       text: model.buttonText,
-                      press: model.navToRegister,
+                      press: model.navToUserHome,
                       margin: 24.0,
                     ),
                     TapableText(

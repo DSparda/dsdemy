@@ -43,4 +43,8 @@ class LogInViewModel extends BaseViewModel {
   Future navToRegister() async {
     await _navigationService.navigateTo(Routes.registerView);
   }
+
+  Future navToUserHome() async {
+    await _navigationService.navigateTo(Routes.userHomeView);
+  }
 }

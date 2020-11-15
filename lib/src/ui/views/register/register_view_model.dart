@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:udemy1/src/app/locator/locator.dart';
-import 'package:udemy1/src/app/router/router.gr.dart';
 
 class RegisterViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
@@ -62,7 +61,7 @@ class RegisterViewModel extends BaseViewModel {
   String _signIn2 = ' Sign In';
   get signIn2 => _signIn2;
 
-  Future navToLogin() async {
-    await _navigationService.navigateTo(Routes.logInView);
+  void navToLogin() {
+    _navigationService.back();
   }
 }
