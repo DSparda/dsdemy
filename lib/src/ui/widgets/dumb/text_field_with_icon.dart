@@ -10,12 +10,16 @@ class TextFieldWithIcon extends StatelessWidget {
     this.hint,
     this.icon,
     this.margin = 12,
+    this.onChanged,
+    this.inputType = TextInputType.text,
   }) : super(key: key);
 
   final bool obsecure;
   final String hint;
   final IconData icon;
   final double margin;
+  final TextInputType inputType;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,8 @@ class TextFieldWithIcon extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20.0),
         child: TextField(
           obscureText: obsecure,
+          onChanged: onChanged,
+          keyboardType: inputType,
           decoration: InputDecoration(
               hintText: hint,
               hintStyle: GoogleFonts.roboto(

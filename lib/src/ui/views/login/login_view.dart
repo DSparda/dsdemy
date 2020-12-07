@@ -6,16 +6,16 @@ import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
-import './log_in_view_model.dart';
+import 'login_view_model.dart';
 
-class LogInView extends StatelessWidget {
+class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<LogInViewModel>.nonReactive(
-      viewModelBuilder: () => LogInViewModel(),
+    return ViewModelBuilder<LoginViewModel>.nonReactive(
+      viewModelBuilder: () => LoginViewModel(),
       builder: (
         BuildContext context,
-        LogInViewModel model,
+        LoginViewModel model,
         Widget child,
       ) {
         var size = MediaQuery.of(context).size;
@@ -45,12 +45,15 @@ class LogInView extends StatelessWidget {
                     TextFieldWithIcon(
                       hint: model.email,
                       icon: model.emailIcon,
+                      inputType: TextInputType.emailAddress,
+                      onChanged: model.emailChanged,
                     ),
                     TextFieldWithIcon(
                       hint: model.password,
                       icon: model.passwordIcon,
                       obsecure: true,
                       margin: 6,
+                      onChanged: model.passwordChanged,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 44.0),
@@ -65,7 +68,7 @@ class LogInView extends StatelessWidget {
                     ),
                     RoundedButton(
                       text: model.buttonText,
-                      press: model.navToUserHome,
+                      press: model.login,
                       margin: 24.0,
                     ),
                     TapableText(

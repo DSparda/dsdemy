@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:stacked_services/stacked_services.dart';
-import 'package:udemy1/src/app/locator/locator.dart';
-import 'package:udemy1/src/app/router/router.gr.dart';
+import 'package:udemy1/src/app/generated/locator/locator.dart';
+import 'package:udemy1/src/app/generated/router/router.gr.dart';
 
 void main() {
   setupLocator();
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.logInView,
+      initialRoute: Routes.loginView,
       onGenerateRoute: Router(),
       navigatorKey: locator<NavigationService>().navigatorKey,
     );

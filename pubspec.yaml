@@ -30,6 +30,8 @@ dependencies:
   # third-party services
   stacked_services: ^0.5.4+3
 
+  http:
+
   flutter_svg: ^0.19.1
 
   google_fonts:

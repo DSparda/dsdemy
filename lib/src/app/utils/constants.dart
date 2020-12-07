@@ -5,10 +5,9 @@ class Constants {
   static const pink18 = Color(0x2EFF7C9C);
   static const pink54 = Color(0x8AFF7C9C);
   static const gradientPink = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [pink, white]
-  );
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [pink, white]);
 
   static const blue = Color(0xFF5285E9);
 
@@ -22,4 +21,9 @@ class Constants {
   static const black45 = Colors.black45;
   static const black63 = Color(0xA1000000);
 
+  static const BASE_URL = 'http://149.28.24.98:9000';
+  static const LOGIN_URL = '$BASE_URL/login';
+  static const REGISTER_URL = '$BASE_URL/register';
+
+  static const REGISTER_SUCCESS = 'Bạn đã tạo tài khoản thành công';
 }
