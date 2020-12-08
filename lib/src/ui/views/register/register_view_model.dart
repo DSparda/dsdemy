@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:udemy1/src/app/generated/locator/locator.dart';
+import 'package:udemy1/src/app/generated/router/router.gr.dart';
 import 'package:udemy1/src/app/models/register/register_error1.dart';
 import 'package:udemy1/src/app/models/register/register_error2.dart';
 import 'package:udemy1/src/app/models/register/register_request.dart';
+import 'package:udemy1/src/app/models/register/register_response.dart';
 import 'package:udemy1/src/app/utils/api_exceptions.dart';
 import 'package:udemy1/src/services/register_api.dart';
+import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
 
-class RegisterViewModel extends BaseViewModel {
+class RegisterViewModel extends CustomBaseViewModel {
   final _registerService = locator<RegisterService>();
-  final _navigationService = locator<NavigationService>();
-  final _dialogService = locator<DialogService>();
+
 
 // #region Title Text
   String _title1 = 'SIGN';
@@ -29,6 +29,7 @@ class RegisterViewModel extends BaseViewModel {
   get userIcon => _userIcon;
 
   String _usernameValue;
+  get usernameValue => _usernameValue;
 
   void usernameChanged(String value) {
     _usernameValue = value;
@@ -63,6 +64,7 @@ class RegisterViewModel extends BaseViewModel {
   get phoneIcon => _phoneIcon;
 
   String _phoneValue;
+  get phoneValue => _phoneValue;
 
   void phoneChanged(String value) {
     _phoneValue = value;
@@ -78,6 +80,7 @@ class RegisterViewModel extends BaseViewModel {
   get emailIcon => _emailIcon;
 
   String _emailValue;
+  get emailValue => _emailValue;
 
   void emailChanged(String value) {
     _emailValue = value;
@@ -93,7 +96,7 @@ class RegisterViewModel extends BaseViewModel {
   get passwordIcon => _passwordIcon;
 
   String _passwordValue;
-
+  get passwordValue => _passwordValue;
   void passwordChanged(String value) {
     _passwordValue = value;
     notifyListeners();
@@ -119,13 +122,22 @@ class RegisterViewModel extends BaseViewModel {
         for (Errors e in eDecoded.errors) {
           eShowed += e.msg += '\n';
         }
-        _dialogService.showDialog(title: e.prefix, description: eShowed);
+        dialogService.showDialog(title: e.prefix, description: eShowed);
       } else if (e is BadRequestException) {
         final eDecoded = RegisterError2.fromJson(e.toMap());
-        _dialogService.showDialog(
+        dialogService.showDialog(
             title: e.prefix, description: eDecoded.message);
       } else {
-        _dialogService.showDialog(title: e.prefix, description: e.toString());
+        dialogService.showDialog(
+          title: e.prefix,
+          description: e.toString(),
+        );
+      }
+    }).then((value) async {
+      if (value is RegisterResponse) {
+        navigationBundle.updateEmail(emailValue);
+        notifyListeners();
+        navtoActivate();
       }
     });
   }
@@ -139,6 +151,10 @@ class RegisterViewModel extends BaseViewModel {
 // #endregion
 
   void navToLogin() {
-    _navigationService.back();
+    navigationService.back();
+  }
+
+  Future navtoActivate() async {
+    await navigationService.navigateTo(Routes.activateView);
   }
 }

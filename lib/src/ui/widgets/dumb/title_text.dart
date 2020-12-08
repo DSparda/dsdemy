@@ -10,13 +10,14 @@ class TitleText extends StatelessWidget {
   final String t2;
   final double fontSize;
   final double margin;
+  final double letterSpacing;
 
   const TitleText({
     this.t1,
     this.t2,
     this.fontSize = 45,
     this.margin = 0,
-    Key key,
+    Key key, this.letterSpacing = 5.0,
   }) : super(key: key);
 
   @override
@@ -29,7 +30,7 @@ class TitleText extends StatelessWidget {
           style: GoogleFonts.anton(
             fontSize: fontSize,
             fontWeight: FontWeight.w700,
-            letterSpacing: 5.0,
+            letterSpacing: letterSpacing,
             color: _t1Color,
           ),
           children: <TextSpan>[

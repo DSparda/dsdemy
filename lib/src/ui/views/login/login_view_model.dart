@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:udemy1/src/app/generated/locator/locator.dart';
 import 'package:udemy1/src/app/generated/router/router.gr.dart';
-import 'package:udemy1/src/app/models/log_in/login_request.dart';
-import 'package:udemy1/src/app/models/log_in/login_response.dart';
+import 'package:udemy1/src/app/models/login/login_request.dart';
+import 'package:udemy1/src/app/models/login/login_response.dart';
 import 'package:udemy1/src/app/models/register/register_error2.dart';
 import 'package:udemy1/src/app/utils/api_exceptions.dart';
 import 'package:udemy1/src/services/login_api.dart';
+import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
 
-class LoginViewModel extends BaseViewModel {
-  final _navigationService = locator<NavigationService>();
+class LoginViewModel extends CustomBaseViewModel {
   final _loginService = locator<LoginService>();
-  final _dialogService = locator<DialogService>();
 
 // #region Sign In Text
   String _title1 = 'SIGN';
@@ -80,10 +77,10 @@ class LoginViewModel extends BaseViewModel {
     _loginService.login(request).catchError((e) {
       if (e is UnauthorisedException) {
         final eDecoded = RegisterError2.fromJson(e.toMap());
-        _dialogService.showDialog(
+        dialogService.showDialog(
             title: e.prefix, description: eDecoded.message);
       } else {
-        _dialogService.showDialog(title: e.prefix, description: e.toString());
+        dialogService.showDialog(title: e.prefix, description: e.toString());
       }
     }).then((value) {
       if (value is LoginResponse) navToUserHome();
@@ -91,10 +88,10 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future navToRegister() async {
-    await _navigationService.navigateTo(Routes.registerView);
+    await navigationService.navigateTo(Routes.registerView);
   }
 
   Future navToUserHome() async {
-    await _navigationService.navigateTo(Routes.userHomeView);
+    await navigationService.navigateTo(Routes.userHomeView);
   }
 }

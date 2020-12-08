@@ -24,6 +24,8 @@ class Constants {
   static const BASE_URL = 'http://149.28.24.98:9000';
   static const LOGIN_URL = '$BASE_URL/login';
   static const REGISTER_URL = '$BASE_URL/register';
+  static const ACTIVATE_URL = '$BASE_URL/active-account';
 
+static const SUCCESS = 'Success';
   static const REGISTER_SUCCESS = 'Bạn đã tạo tài khoản thành công';
 }

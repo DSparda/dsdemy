@@ -16,7 +16,7 @@ class RoundedButton extends StatelessWidget {
   const RoundedButton({
     Key key,
     this.text,
-    this.margin,
+    this.margin = 12,
     this.press,
   }) : super(key: key);
 

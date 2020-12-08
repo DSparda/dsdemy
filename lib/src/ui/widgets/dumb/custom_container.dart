@@ -16,7 +16,8 @@ class CustomContainer extends StatelessWidget {
     this.margin = 12,
     this.child,
     this.borderColor = Constants.pink18,
-    this.shadowColor = Constants.transparent, this.widthPadding = 80.0,
+    this.shadowColor = Constants.transparent,
+    this.widthPadding = 80.0,
   }) : super(key: key);
 
   @override
