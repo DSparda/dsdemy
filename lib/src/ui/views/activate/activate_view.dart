@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:udemy1/src/ui/widgets/dumb/description_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';

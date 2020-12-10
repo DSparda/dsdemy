@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
+import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
@@ -11,7 +12,7 @@ import 'login_view_model.dart';
 class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<LoginViewModel>.nonReactive(
+    return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (
         BuildContext context,
@@ -66,11 +67,20 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    RoundedButton(
-                      text: model.buttonText,
-                      press: model.login,
-                      margin: 24.0,
-                    ),
+                    model.isLoading
+                        ? Container(
+                            margin: EdgeInsets.only(bottom: 24.0),
+                            child: CircularProgressIndicator(
+                              backgroundColor: Constants.pink18,
+                              valueColor:
+                                  AlwaysStoppedAnimation(Constants.blue),
+                            ),
+                          )
+                        : RoundedButton(
+                            text: model.buttonText,
+                            press: model.login,
+                            margin: 24.0,
+                          ),
                     TapableText(
                       t1: model.signUp1,
                       t2: model.signUp2,

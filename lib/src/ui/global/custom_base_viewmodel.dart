@@ -8,4 +8,11 @@ abstract class CustomBaseViewModel extends BaseViewModel {
   final dialogService = locator<DialogService>();
   final navigationBundle = locator<NavigationBundle>();
   final snackbarService = locator<SnackbarService>();
+
+  bool _isLoading = false;
+  get isLoading => _isLoading;
+  void updateLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
 }

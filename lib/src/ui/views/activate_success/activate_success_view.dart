@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:udemy1/src/ui/widgets/dumb/description_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';

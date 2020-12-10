@@ -74,7 +74,10 @@ class LoginViewModel extends CustomBaseViewModel {
       password: _passwordValue,
     );
 
+    updateLoading(true);
+
     _loginService.login(request).catchError((e) {
+      updateLoading(false);
       if (e is UnauthorisedException) {
         final eDecoded = RegisterError2.fromJson(e.toMap());
         dialogService.showDialog(
@@ -83,6 +86,7 @@ class LoginViewModel extends CustomBaseViewModel {
         dialogService.showDialog(title: e.prefix, description: e.toString());
       }
     }).then((value) {
+      updateLoading(false);
       if (value is LoginResponse) navToUserHome();
     });
   }
