@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:udemy1/src/ui/widgets/dumb/bottom_bar.dart';
 import 'package:udemy1/src/ui/widgets/dumb/button_with_icon.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_app_bar.dart';
 import './user_home_view_model.dart';
 
 class UserHomeView extends StatelessWidget {
@@ -17,10 +18,9 @@ class UserHomeView extends StatelessWidget {
       ) {
         var size = MediaQuery.of(context).size;
         return Scaffold(
-          appBar: AppBar(
-            title: Text(model.title),
-            backgroundColor: Constants.pink,
-            automaticallyImplyLeading: false,
+          appBar: CustomAppBar(
+            iconURL: model.avaURL,
+            name: model.name,
           ),
           bottomNavigationBar: BottomBar(
             selected: 4,
@@ -28,7 +28,9 @@ class UserHomeView extends StatelessWidget {
           body: Container(
             width: size.width,
             height: size.height,
-            decoration: BoxDecoration(gradient: Constants.gradientPink),
+            decoration: BoxDecoration(
+              gradient: Constants.gradientPink,
+            ),
             child: Center(
               child: SingleChildScrollView(
                 child: Column(

@@ -12,7 +12,6 @@ import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
 class RegisterViewModel extends CustomBaseViewModel {
   final _registerService = locator<RegisterService>();
 
-
 // #region Title Text
   String _title1 = 'SIGN';
   get title1 => _title1;
@@ -115,7 +114,10 @@ class RegisterViewModel extends CustomBaseViewModel {
       gender: _selectedGender,
     );
 
+    updateLoading(true);
+
     await _registerService.register(request).catchError((e) {
+      updateLoading(false);
       if (e is InvalidInputException) {
         final eDecoded = RegisterError1.fromJson(e.toMap());
         String eShowed = '';
@@ -134,6 +136,7 @@ class RegisterViewModel extends CustomBaseViewModel {
         );
       }
     }).then((value) async {
+      updateLoading(false);
       if (value is RegisterResponse) {
         navigationBundle.updateEmail(emailValue);
         notifyListeners();

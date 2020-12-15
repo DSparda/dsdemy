@@ -1,7 +1,14 @@
-import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
+import 'package:udemy1/src/app/utils/constants.dart';
+import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
 
-class UserHomeViewModel extends BaseViewModel {
+class UserHomeViewModel extends CustomBaseViewModel {
+  String get gender => navigationBundle.gender;
+  String get avaURL =>
+      this.gender == 'nam' ? Constants.MALE_AVA_URL : Constants.FEMALE_AVA_URL;
+
+  String get name => navigationBundle.name;
+
   String _title = 'User Home Page';
   get title => _title;
 

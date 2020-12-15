@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_loading_indicator.dart';
 import 'package:udemy1/src/ui/widgets/dumb/description_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
@@ -43,10 +44,12 @@ class ActivateView extends StatelessWidget {
                           margin: 24,
                           onChanged: model.codeChanged,
                         ),
-                        RoundedButton(
-                          text: model.buttonText,
-                          press: model.activate,
-                        )
+                        model.isLoading
+                            ? CustomLoadingIndicator()
+                            : RoundedButton(
+                                text: model.buttonText,
+                                press: model.activate,
+                              )
                       ],
                     ),
                   ),

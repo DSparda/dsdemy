@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-import 'package:udemy1/src/app/utils/constants.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_loading_indicator.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/tapable_text.dart';
 import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
@@ -68,14 +68,7 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                     model.isLoading
-                        ? Container(
-                            margin: EdgeInsets.only(bottom: 24.0),
-                            child: CircularProgressIndicator(
-                              backgroundColor: Constants.pink18,
-                              valueColor:
-                                  AlwaysStoppedAnimation(Constants.blue),
-                            ),
-                          )
+                        ? CustomLoadingIndicator()
                         : RoundedButton(
                             text: model.buttonText,
                             press: model.login,
@@ -97,3 +90,5 @@ class LoginView extends StatelessWidget {
     );
   }
 }
+
+

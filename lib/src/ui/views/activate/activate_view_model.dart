@@ -42,10 +42,11 @@ class ActivateViewModel extends CustomBaseViewModel {
       activeToken: _codeValue,
     );
 
+    updateLoading(true);
+
     await _activateService.activate(request).catchError((e) {
+      updateLoading(false);
       if (e is BadRequestException) {
-        print(request.email);
-        print(request.activeToken);
         final eDecoded = RegisterError2.fromJson(e.toMap());
         dialogService.showDialog(
             title: e.prefix, description: eDecoded.message);
@@ -56,6 +57,7 @@ class ActivateViewModel extends CustomBaseViewModel {
         );
       }
     }).then((value) {
+      updateLoading(false);
       if (value is ActivateResponse) {
         navToActivateSuccess();
       }

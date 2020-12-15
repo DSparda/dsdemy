@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:udemy1/src/ui/widgets/dumb/custom_dropdown.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_loading_indicator.dart';
 import 'package:udemy1/src/ui/widgets/dumb/rounded_button.dart';
 import 'package:udemy1/src/ui/widgets/dumb/text_field_with_icon.dart';
 import 'package:udemy1/src/ui/widgets/dumb/title_text.dart';
@@ -70,11 +71,13 @@ class RegisterView extends StatelessWidget {
                               obsecure: true,
                               margin: 36.0,
                             ),
-                            RoundedButton(
-                              text: model.buttonText,
-                              press: model.resgister,
-                              margin: 36.0,
-                            ),
+                            model.isLoading
+                                ? CustomLoadingIndicator()
+                                : RoundedButton(
+                                    text: model.buttonText,
+                                    press: model.resgister,
+                                    margin: 36.0,
+                                  ),
                             TapableText(
                               t1: model.signIn1,
                               t2: model.signIn2,

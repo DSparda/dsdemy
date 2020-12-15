@@ -87,7 +87,11 @@ class LoginViewModel extends CustomBaseViewModel {
       }
     }).then((value) {
       updateLoading(false);
-      if (value is LoginResponse) navToUserHome();
+      if (value is LoginResponse) {
+        navigationBundle.updateGender(value.gender);
+        navigationBundle.updateName(value.name);
+        navToUserHome();
+      }
     });
   }
 
