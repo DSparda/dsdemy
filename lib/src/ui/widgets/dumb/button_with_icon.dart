@@ -8,12 +8,14 @@ class ButtonWithIcon extends StatelessWidget {
   final IconData icon;
   final String text;
   final widthPadding;
+  final Function press;
 
   const ButtonWithIcon({
     Key key,
     this.icon,
     this.text,
     this.widthPadding = 120.0,
+    this.press,
   }) : super(key: key);
 
   @override
@@ -53,7 +55,7 @@ class ButtonWithIcon extends StatelessWidget {
                 ),
               ],
             ),
-            onPressed: () {},
+            onPressed: press,
           ),
         ),
       ),

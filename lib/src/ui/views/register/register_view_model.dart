@@ -135,7 +135,7 @@ class RegisterViewModel extends CustomBaseViewModel {
           description: e.toString(),
         );
       }
-    }).then((value) async {
+    }).then((value) {
       updateLoading(false);
       if (value is RegisterResponse) {
         navigationBundle.updateEmail(emailValue);

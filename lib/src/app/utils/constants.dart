@@ -9,6 +9,10 @@ class Constants {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [pink00, pink]);
+    static const gradientPink100 = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [pink, pink00]);
 
   static const blue = Color(0xFF5285E9);
 
@@ -26,6 +30,7 @@ class Constants {
   static const LOGIN_URL = '$BASE_URL/login';
   static const REGISTER_URL = '$BASE_URL/register';
   static const ACTIVATE_URL = '$BASE_URL/active-account';
+  static const GET_ALL_CATEGORY_URL = '$BASE_URL/category/get-all-category';
 
   static const SUCCESS = 'Success';
   static const REGISTER_SUCCESS = 'Bạn đã tạo tài khoản thành công';

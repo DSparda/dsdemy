@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:udemy1/src/app/generated/locator/locator.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
-import 'package:udemy1/src/ui/widgets/dumb/bottom_bar.dart';
 import 'package:udemy1/src/ui/widgets/dumb/button_with_icon.dart';
 import 'package:udemy1/src/ui/widgets/dumb/custom_app_bar.dart';
-import './user_home_view_model.dart';
+import 'user_view_model.dart';
 
-class UserHomeView extends StatelessWidget {
+class UserView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<UserHomeViewModel>.nonReactive(
-      viewModelBuilder: () => UserHomeViewModel(),
+    return ViewModelBuilder<UserViewModel>.reactive(
+      disposeViewModel: false,
+      initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () => locator<UserViewModel>(),
       builder: (
         BuildContext context,
-        UserHomeViewModel model,
+        UserViewModel model,
         Widget child,
       ) {
         var size = MediaQuery.of(context).size;
@@ -21,9 +23,6 @@ class UserHomeView extends StatelessWidget {
           appBar: CustomAppBar(
             iconURL: model.avaURL,
             name: model.name,
-          ),
-          bottomNavigationBar: BottomBar(
-            selected: 4,
           ),
           body: Container(
             width: size.width,

@@ -10,10 +10,13 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../services/activate_api.dart';
 import '../../../services/api_helper.dart';
+import '../../../services/feature_api.dart';
+import '../../../ui/views/feature/feature_view_model.dart';
 import '../../../services/login_api.dart';
 import '../../../services/navigation_bundle.dart';
 import '../../../services/register_api.dart';
 import '../../../services/third_party_services_module.dart';
+import '../../../ui/views/user/user_view_model.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -28,6 +31,7 @@ GetIt $initGetIt(
   gh.lazySingleton<ActivateService>(() => ActivateService());
   gh.lazySingleton<ApiHelper>(() => ApiHelper());
   gh.lazySingleton<DialogService>(() => thirdPartyServicesModule.dialogService);
+  gh.lazySingleton<FeatureSerivce>(() => FeatureSerivce());
   gh.lazySingleton<LoginService>(() => LoginService());
   gh.lazySingleton<NavigationBundle>(() => NavigationBundle());
   gh.lazySingleton<NavigationService>(
@@ -35,6 +39,10 @@ GetIt $initGetIt(
   gh.lazySingleton<RegisterService>(() => RegisterService());
   gh.lazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackbarService);
+
+  // Eager singletons must be registered in the right order
+  gh.singleton<FeatureViewModel>(FeatureViewModel());
+  gh.singleton<UserViewModel>(UserViewModel());
   return get;
 }
 

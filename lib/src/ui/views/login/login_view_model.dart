@@ -90,7 +90,7 @@ class LoginViewModel extends CustomBaseViewModel {
       if (value is LoginResponse) {
         navigationBundle.updateGender(value.gender);
         navigationBundle.updateName(value.name);
-        navToUserHome();
+        navToHome();
       }
     });
   }
@@ -99,7 +99,7 @@ class LoginViewModel extends CustomBaseViewModel {
     await navigationService.navigateTo(Routes.registerView);
   }
 
-  Future navToUserHome() async {
-    await navigationService.navigateTo(Routes.userHomeView);
+  Future navToHome() async {
+    await navigationService.navigateTo(Routes.bottomBarView);
   }
 }

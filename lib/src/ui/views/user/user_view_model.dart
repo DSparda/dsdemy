@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:udemy1/src/app/generated/router/router.gr.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
 
-class UserHomeViewModel extends CustomBaseViewModel {
+@singleton
+class UserViewModel extends CustomBaseViewModel {
   String get gender => navigationBundle.gender;
   String get avaURL =>
       this.gender == 'nam' ? Constants.MALE_AVA_URL : Constants.FEMALE_AVA_URL;
@@ -35,4 +38,8 @@ class UserHomeViewModel extends CustomBaseViewModel {
 
   IconData _paymentIcon = Icons.payment;
   get paymentIcon => _paymentIcon;
+
+  Future navToFeature() async {
+    await navigationService.navigateTo(Routes.featureView);
+  }
 }

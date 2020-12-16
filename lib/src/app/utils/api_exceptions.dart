@@ -10,21 +10,25 @@ class AppException implements Exception {
   Map<String, dynamic> toMap() {
     return jsonDecode(_message);
   }
+
+  String toString() {
+    return '$_message';
+  }
 }
 
 class FetchDataException extends AppException {
   FetchDataException([String message])
-      : super(message, "Error During Communication: ");
+      : super(message, "Error During Communication ");
 }
 
 class BadRequestException extends AppException {
-  BadRequestException([message]) : super(message, "Invalid Request: ");
+  BadRequestException([message]) : super(message, "Invalid Request ");
 }
 
 class UnauthorisedException extends AppException {
-  UnauthorisedException([message]) : super(message, "Unauthorised: ");
+  UnauthorisedException([message]) : super(message, "Unauthorised ");
 }
 
 class InvalidInputException extends AppException {
-  InvalidInputException([String message]) : super(message, "Invalid Input: ");
+  InvalidInputException([String message]) : super(message, "Invalid Input ");
 }

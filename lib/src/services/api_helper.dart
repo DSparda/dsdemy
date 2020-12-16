@@ -7,6 +7,16 @@ import 'package:udemy1/src/app/utils/api_exceptions.dart';
 
 @lazySingleton
 class ApiHelper {
+  Future<dynamic> get(String url) async {
+    final response = await http.get(url, headers: {
+      "Content-type": "application/json",
+    }).catchError(
+      (e) => throw FetchDataException('No Internet connection'),
+      test: (e) => e is SocketException,
+    );
+    return _returnResponse(response);
+  }
+
   Future<dynamic> post(String url, dynamic request) async {
     final response = await http.post(url,
         body: jsonEncode(
@@ -25,10 +35,10 @@ class ApiHelper {
   dynamic _returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        var responseJson = jsonDecode(response.body);
+        var responseJson = jsonDecode(response.body.toString());
         print(responseJson);
         return responseJson;
-      case 401: 
+      case 401:
         throw UnauthorisedException(response.body);
       case 422:
         throw InvalidInputException(response.body);
