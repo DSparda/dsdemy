@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'package:udemy1/src/app/generated/locator/locator.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
 import 'package:udemy1/src/ui/widgets/dumb/app_bar_with_back.dart';
+import 'package:udemy1/src/ui/widgets/dumb/custom_loading_indicator.dart';
 
 import './feature_view_model.dart';
 
@@ -22,7 +23,6 @@ class FeatureView extends StatelessWidget {
         Widget child,
       ) {
         var size = MediaQuery.of(context).size;
-
         return Scaffold(
           extendBodyBehindAppBar: true,
           appBar: AppBarWithBack(),
@@ -34,33 +34,92 @@ class FeatureView extends StatelessWidget {
             ),
             child: SafeArea(
               child: Container(
-                margin: EdgeInsets.only(left: 20),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      'assets/images/category.svg',
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: SvgPicture.asset(
+                        'assets/images/category.svg',
+                      ),
                     ),
                     SizedBox(
                       height: 12.0,
                     ),
-                    model.isBusy
-                        ? CircularProgressIndicator()
-                        : CarouselSlider(
-                            options: CarouselOptions(),
-                            items: model.data
-                                .map((e) => Container(
-                                    width: 180,
-                                    height: 150,
-                                    child: Text(
-                                      e.name,
-                                      style: GoogleFonts.montserrat(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15,
-                                          color: Constants.black54),
-                                    )))
-                                .toList()),
-                    SizedBox(height: 24),
+                    model.fetchingCategories
+                        ? CustomLoadingIndicator()
+                        : CarouselSlider.builder(
+                            options: CarouselOptions(
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1,
+                            ),
+                            itemCount:
+                                (model.fetchedCategories.length / 2).round(),
+                            itemBuilder: (context, index) {
+                              final int first = index * 2;
+                              final int second = first + 1;
+                              return Row(
+                                children: [first, second].map((idx) {
+                                  return Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: (idx >
+                                              model.fetchedCategories.length -
+                                                  1)
+                                          ? Container(
+                                              width: 0,
+                                              height: 0,
+                                            )
+                                          : Column(
+                                              children: [
+                                                Container(
+                                                  height: 150,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    child: Image.network(
+                                                      model.idToImageUrl(model
+                                                          .fetchedCategories[
+                                                              idx]
+                                                          .sId),
+                                                      fit: BoxFit.cover,
+                                                      width: 180,
+                                                      height: 150,
+                                                      loadingBuilder: (BuildContext
+                                                              context,
+                                                          Widget child,
+                                                          ImageChunkEvent
+                                                              loadingProgress) {
+                                                        if (loadingProgress ==
+                                                            null) return child;
+                                                        return CustomLoadingIndicator(
+                                                            height: 150.0);
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  model.fetchedCategories[idx]
+                                                      .name,
+                                                  style: GoogleFonts.montserrat(
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Constants.black54,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                    ),
+                                  );
+                                }).toList(),
+                              );
+                            },
+                          ),
                   ],
                 ),
               ),
