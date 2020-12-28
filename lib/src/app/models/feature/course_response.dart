@@ -81,7 +81,7 @@ class CourseResponse {
 
 class Vote {
   int totalVote;
-  int eVGVote;
+  dynamic eVGVote;
 
   Vote({this.totalVote, this.eVGVote});
 
