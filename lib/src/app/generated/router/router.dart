@@ -4,6 +4,7 @@ import 'package:udemy1/src/ui/views/activate_success/activate_success_view.dart'
 import 'package:udemy1/src/ui/views/feature/feature_view.dart';
 import 'package:udemy1/src/ui/views/login/login_view.dart';
 import 'package:udemy1/src/ui/views/register/register_view.dart';
+import 'package:udemy1/src/ui/views/user/update_user_view.dart';
 import 'package:udemy1/src/ui/views/user/user_view.dart';
 import 'package:udemy1/src/ui/widgets/smart/bottom_bar_view.dart';
 
@@ -14,6 +15,7 @@ import 'package:udemy1/src/ui/widgets/smart/bottom_bar_view.dart';
   MaterialRoute(page: ActivateView),
   MaterialRoute(page: ActivateSuccessView),
   MaterialRoute(page: FeatureView),
-  MaterialRoute(page: BottomBarView)
+  MaterialRoute(page: BottomBarView),
+  MaterialRoute(page: UpdateUserView),
 ])
 class $Router {}

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
-import 'package:udemy1/src/ui/widgets/dumb/custom_container.dart';
 
-class TextFieldWithIcon extends StatelessWidget {
+import 'custom_container.dart';
+
+class TextFieldWithIcon extends StatefulWidget {
   const TextFieldWithIcon({
     Key key,
     this.obsecure = false,
@@ -13,6 +14,7 @@ class TextFieldWithIcon extends StatelessWidget {
     this.onChanged,
     this.inputType = TextInputType.text,
     this.backgroundColor = Constants.pink18,
+    this.text = '',
   }) : super(key: key);
 
   final bool obsecure;
@@ -22,28 +24,52 @@ class TextFieldWithIcon extends StatelessWidget {
   final TextInputType inputType;
   final Function(String) onChanged;
   final Color backgroundColor;
+  final String text;
+
+  @override
+  _TextFieldWithIconState createState() => _TextFieldWithIconState();
+}
+
+class _TextFieldWithIconState extends State<TextFieldWithIcon> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    myController.text = widget.text;
+    myController.addListener(() => widget.onChanged(myController.text));
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      borderColor: backgroundColor,
-      margin: margin,
+      borderColor: widget.backgroundColor,
+      margin: widget.margin,
       child: Padding(
-        padding: icon != null
+        padding: widget.icon != null
             ? EdgeInsets.only(left: 20.0)
             : EdgeInsets.only(left: 0),
         child: TextField(
-          obscureText: obsecure,
-          onChanged: onChanged,
-          keyboardType: inputType,
+          controller: myController,
+          obscureText: widget.obsecure,
+          autofocus: true,
+          keyboardType: widget.inputType,
           decoration: InputDecoration(
-              hintText: hint,
+              hintText: widget.hint,
               hintStyle: GoogleFonts.roboto(
                 color: Constants.black45,
               ),
-              icon: icon != null
+              icon: widget.icon != null
                   ? Icon(
-                      icon,
+                      widget.icon,
                       color: Constants.black54,
                     )
                   : Container(

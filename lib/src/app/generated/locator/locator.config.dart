@@ -16,6 +16,7 @@ import '../../../services/login_api.dart';
 import '../../../services/navigation_bundle.dart';
 import '../../../services/register_api.dart';
 import '../../../services/third_party_services_module.dart';
+import '../../../services/user_api.dart';
 import '../../../ui/views/user/user_view_model.dart';
 
 /// adds generated dependencies
@@ -39,6 +40,7 @@ GetIt $initGetIt(
   gh.lazySingleton<RegisterService>(() => RegisterService());
   gh.lazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackbarService);
+  gh.lazySingleton<UserService>(() => UserService());
 
   // Eager singletons must be registered in the right order
   gh.singleton<FeatureViewModel>(FeatureViewModel());

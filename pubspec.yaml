@@ -32,6 +32,8 @@ dependencies:
 
   http:
 
+  observable_ish:
+
   flutter_svg: ^0.19.1
 
   # Image Slider

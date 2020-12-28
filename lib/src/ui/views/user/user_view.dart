@@ -38,6 +38,7 @@ class UserView extends StatelessWidget {
                     ButtonWithIcon(
                       icon: model.userProfileIcon,
                       text: model.userProfile,
+                      press: model.navToUpdateUser,
                     ),
                     ButtonWithIcon(
                       icon: model.avatarIcon,

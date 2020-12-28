@@ -30,7 +30,6 @@ class LoginViewModel extends CustomBaseViewModel {
 
   void emailChanged(String value) {
     _emailValue = value;
-    notifyListeners();
   }
 // #endregion
 
@@ -45,7 +44,6 @@ class LoginViewModel extends CustomBaseViewModel {
 
   void passwordChanged(String value) {
     _passwordValue = value;
-    notifyListeners();
   }
 // #endregion
 
@@ -68,7 +66,7 @@ class LoginViewModel extends CustomBaseViewModel {
   get signUp2 => _signUp2;
 // #endregion
 
-  void login() async {
+  void login() {
     final request = LoginRequest(
       email: _emailValue,
       password: _passwordValue,
@@ -88,8 +86,16 @@ class LoginViewModel extends CustomBaseViewModel {
     }).then((value) {
       updateLoading(false);
       if (value is LoginResponse) {
-        navigationBundle.updateGender(value.gender);
-        navigationBundle.updateName(value.name);
+        navigationBundle
+          ..updateAddress(value.address)
+          ..updateDescription(value.description)
+          ..updateEmail(value.email)
+          ..updateGender(value.gender)
+          ..updateName(value.name)
+          ..updatePhone(value.phone);
+        print(value.name);
+        print(value.gender);
+        print(value.phone);
         navToHome();
       }
     });

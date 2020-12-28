@@ -30,6 +30,7 @@ class Constants {
   static const LOGIN_URL = '$BASE_URL/login';
   static const REGISTER_URL = '$BASE_URL/register';
   static const ACTIVATE_URL = '$BASE_URL/active-account';
+  static const UPDATE_PROFILE_URL = '$BASE_URL/change-profile';
   static const GET_ALL_CATEGORY_URL = '$BASE_URL/category/get-all-category';
   static const GET_ALL_TOP_COURSE_URL = '$BASE_URL/course/get-top';
   static const GET_ALL_FREE_COURSE_URL = '$BASE_URL/course/get-free';
@@ -39,6 +40,7 @@ class Constants {
 
   static const SUCCESS = 'Success';
   static const REGISTER_SUCCESS = 'Bạn đã tạo tài khoản thành công';
+  static const UPDATE_PROFILE_SUCCESS = 'Bạn đã cập nhật tài khoản thành công';
 
   static const MALE_AVA_URL = 'assets/images/male.png';
   static const FEMALE_AVA_URL = 'assets/images/female.png';

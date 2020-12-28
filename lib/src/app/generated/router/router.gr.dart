@@ -14,6 +14,7 @@ import '../../../ui/views/activate_success/activate_success_view.dart';
 import '../../../ui/views/feature/feature_view.dart';
 import '../../../ui/views/login/login_view.dart';
 import '../../../ui/views/register/register_view.dart';
+import '../../../ui/views/user/update_user_view.dart';
 import '../../../ui/views/user/user_view.dart';
 import '../../../ui/widgets/smart/bottom_bar_view.dart';
 
@@ -25,6 +26,7 @@ class Routes {
   static const String activateSuccessView = '/activate-success-view';
   static const String featureView = '/feature-view';
   static const String bottomBarView = '/bottom-bar-view';
+  static const String updateUserView = '/update-user-view';
   static const all = <String>{
     loginView,
     registerView,
@@ -33,6 +35,7 @@ class Routes {
     activateSuccessView,
     featureView,
     bottomBarView,
+    updateUserView,
   };
 }
 
@@ -47,6 +50,7 @@ class Router extends RouterBase {
     RouteDef(Routes.activateSuccessView, page: ActivateSuccessView),
     RouteDef(Routes.featureView, page: FeatureView),
     RouteDef(Routes.bottomBarView, page: BottomBarView),
+    RouteDef(Routes.updateUserView, page: UpdateUserView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -90,6 +94,12 @@ class Router extends RouterBase {
     BottomBarView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const BottomBarView(),
+        settings: data,
+      );
+    },
+    UpdateUserView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => UpdateUserView(),
         settings: data,
       );
     },

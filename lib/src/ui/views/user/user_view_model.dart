@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:udemy1/src/app/generated/locator/locator.dart';
 import 'package:udemy1/src/app/generated/router/router.gr.dart';
 import 'package:udemy1/src/app/utils/constants.dart';
-import 'package:udemy1/src/ui/global/custom_base_viewmodel.dart';
+import 'package:udemy1/src/services/navigation_bundle.dart';
 
 @singleton
-class UserViewModel extends CustomBaseViewModel {
+class UserViewModel extends ReactiveViewModel {
+  final navigationBundle = locator<NavigationBundle>();
+  final navigationService = locator<NavigationService>();
+
+  List<ReactiveServiceMixin> get reactiveServices => [navigationBundle];
+
   String get gender => navigationBundle.gender;
   String get avaURL =>
       this.gender == 'nam' ? Constants.MALE_AVA_URL : Constants.FEMALE_AVA_URL;
@@ -41,5 +49,9 @@ class UserViewModel extends CustomBaseViewModel {
 
   Future navToFeature() async {
     await navigationService.navigateTo(Routes.featureView);
+  }
+
+  Future navToUpdateUser() async {
+    await navigationService.navigateTo(Routes.updateUserView);
   }
 }
